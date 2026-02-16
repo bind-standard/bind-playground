@@ -73,7 +73,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           "type"
         ],
         "additionalProperties": false,
-        "description": "A Bundle is a container for a collection of BIND resources. Inspired by HL7 FHIR Bundle, it enables systems to exchange groups of related resources in a single payload — for example, a complete submission package, a policy with all its coverages and risks, or a batch of updates.\n\nBundle types serve different purposes:\n- **document**: A coherent set of resources treated as a document (e.g., a full submission package).\n- **message**: A message between systems, where the first entry defines the message intent.\n- **transaction**: A set of resources to be processed as a single atomic operation.\n- **transaction-response**: The server's response to a transaction bundle.\n- **batch**: A set of independent operations to be processed individually.\n- **batch-response**: The server's response to a batch bundle.\n- **searchset**: Results of a search operation.\n- **history**: Version history of a resource.\n- **collection**: A generic collection of resources with no particular processing semantics.",
+        "description": "A Bundle is a container for a collection of BIND resources. It enables systems to exchange groups of related resources in a single payload — for example, a complete submission package, a policy with all its coverages and risks, or a batch of updates.\n\nBundle types serve different purposes:\n- **document**: A coherent set of resources treated as a document (e.g., a full submission package).\n- **message**: A message between systems, where the first entry defines the message intent.\n- **transaction**: A set of resources to be processed as a single atomic operation.\n- **transaction-response**: The server's response to a transaction bundle.\n- **batch**: A set of independent operations to be processed individually.\n- **batch-response**: The server's response to a batch bundle.\n- **searchset**: Results of a search operation.\n- **history**: Version history of a resource.\n- **collection**: A generic collection of resources with no particular processing semantics.",
         "examples": [
           {
             "resourceType": "Bundle",
@@ -521,7 +521,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "individual",
               "organization"
             ],
-            "description": "Whether the insured is an individual or an organization",
+            "description": "Whether the insured is an individual or an organization.",
             "x-terminology": {
               "system": "InsuredType",
               "binding": "extensible"
@@ -593,7 +593,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "entityType": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Legal entity type",
+            "description": "Legal entity type.",
             "x-terminology": {
               "system": "LegalEntity",
               "binding": "extensible"
@@ -620,7 +620,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "other",
               "unknown"
             ],
-            "description": "Gender of the individual insured",
+            "description": "Gender of the individual insured.",
             "x-terminology": {
               "system": "Gender",
               "binding": "extensible"
@@ -635,7 +635,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "widowed",
               "domestic-partner"
             ],
-            "description": "Marital status of the individual insured",
+            "description": "Marital status of the individual insured.",
             "x-terminology": {
               "system": "MaritalStatus",
               "binding": "extensible"
@@ -2029,7 +2029,7 @@ export const allSchemas: Record<string, JSONSchema> = {
         "properties": {
           "lineOfBusiness": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Line of business this premium applies to",
+            "description": "Line of business this premium applies to.",
             "x-terminology": {
               "system": "LineOfBusiness",
               "binding": "preferred"
@@ -2186,7 +2186,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "items": {
               "$ref": "#/definitions/CodeableConcept"
             },
-            "description": "Lines of business covered by this policy",
+            "description": "Lines of business covered by this policy.",
             "x-terminology": {
               "system": "LineOfBusiness",
               "binding": "preferred"
@@ -2231,7 +2231,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "cancellationReason": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Reason for cancellation, if applicable",
+            "description": "Reason for cancellation, if applicable.",
             "x-terminology": {
               "system": "CancellationReason",
               "binding": "extensible"
@@ -2243,7 +2243,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "occurrence",
               "claims-made"
             ],
-            "description": "Policy form (e.g., occurrence, claims-made)",
+            "description": "Policy form (e.g., occurrence, claims-made).",
             "x-terminology": {
               "system": "CoverageForm",
               "binding": "extensible"
@@ -2304,7 +2304,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "pay-as-you-go",
               "premium-finance"
             ],
-            "description": "Billing method for premium collection",
+            "description": "Billing method for premium collection.",
             "x-terminology": {
               "system": "BillingMethod",
               "binding": "extensible"
@@ -2318,7 +2318,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "quarterly",
               "monthly"
             ],
-            "description": "Premium payment frequency",
+            "description": "Premium payment frequency.",
             "x-terminology": {
               "system": "BillingFrequency",
               "binding": "extensible"
@@ -2557,7 +2557,7 @@ export const allSchemas: Record<string, JSONSchema> = {
         "properties": {
           "type": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Type of commission (standard, contingent, override, bonus, profit-sharing)",
+            "description": "Type of commission (standard, contingent, override, bonus, profit-sharing).",
             "x-terminology": {
               "system": "CommissionType",
               "binding": "extensible"
@@ -2587,7 +2587,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "on-collection",
               "installment"
             ],
-            "description": "When commission is earned/payable",
+            "description": "When commission is earned/payable.",
             "x-terminology": {
               "system": "CommissionSchedule",
               "binding": "extensible"
@@ -2666,7 +2666,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "role": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Role of this party in the split (e.g., house, producer, wholesaler)",
+            "description": "Role of this party in the split (e.g., house, producer, wholesaler).",
             "x-terminology": {
               "system": "CommissionSplitRole",
               "binding": "extensible"
@@ -2689,7 +2689,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "type": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Type of endorsement",
+            "description": "Type of endorsement.",
             "x-terminology": {
               "system": "EndorsementType",
               "binding": "extensible"
@@ -2953,7 +2953,7 @@ export const allSchemas: Record<string, JSONSchema> = {
         "properties": {
           "category": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "The category of this split limit component (e.g., Per Person BI, Per Accident BI, PD)",
+            "description": "The category of this split limit component (e.g., Per Person BI, Per Accident BI, PD).",
             "x-terminology": {
               "system": "SplitLimitCategory",
               "binding": "extensible"
@@ -2993,7 +2993,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "earthquake",
               "all-perils"
             ],
-            "description": "How the deductible applies",
+            "description": "How the deductible applies.",
             "x-terminology": {
               "system": "DeductibleType",
               "binding": "extensible"
@@ -3006,7 +3006,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "alae-inclusive",
               "alae-exclusive"
             ],
-            "description": "How loss adjustment expenses (ALAE/LAE) interact with the deductible",
+            "description": "How loss adjustment expenses (ALAE/LAE) interact with the deductible.",
             "x-terminology": {
               "system": "AlaeApplication",
               "binding": "extensible"
@@ -3073,7 +3073,7 @@ export const allSchemas: Record<string, JSONSchema> = {
         "properties": {
           "type": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Name or type of the extension",
+            "description": "Name or type of the extension.",
             "x-terminology": {
               "system": "CoverageExtensionType",
               "binding": "extensible"
@@ -3492,7 +3492,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "coveragePart": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Coverage part identifier (e.g., HO: A=Dwelling, B=Other Structures, C=Personal Property, D=Loss of Use, E=Personal Liability, F=Medical Payments)",
+            "description": "Coverage part identifier (e.g., HO: A=Dwelling, B=Other Structures, C=Personal Property, D=Loss of Use, E=Personal Liability, F=Medical Payments).",
             "x-terminology": {
               "system": "CoveragePart",
               "binding": "extensible"
@@ -3785,7 +3785,7 @@ export const allSchemas: Record<string, JSONSchema> = {
         "properties": {
           "category": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "The category of this split limit component (e.g., Per Person BI, Per Accident BI, PD)",
+            "description": "The category of this split limit component (e.g., Per Person BI, Per Accident BI, PD).",
             "x-terminology": {
               "system": "SplitLimitCategory",
               "binding": "extensible"
@@ -3825,7 +3825,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "earthquake",
               "all-perils"
             ],
-            "description": "How the deductible applies",
+            "description": "How the deductible applies.",
             "x-terminology": {
               "system": "DeductibleType",
               "binding": "extensible"
@@ -3838,7 +3838,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "alae-inclusive",
               "alae-exclusive"
             ],
-            "description": "How loss adjustment expenses (ALAE/LAE) interact with the deductible",
+            "description": "How loss adjustment expenses (ALAE/LAE) interact with the deductible.",
             "x-terminology": {
               "system": "AlaeApplication",
               "binding": "extensible"
@@ -3991,7 +3991,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "rateBasis": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Description of the rate basis (e.g., \"per $100 of payroll\", \"per $1,000 of revenue\")",
+            "description": "Description of the rate basis (e.g., \"per $100 of payroll\", \"per $1,000 of revenue\").",
             "x-terminology": {
               "system": "PremiumBase",
               "binding": "extensible"
@@ -4147,7 +4147,7 @@ export const allSchemas: Record<string, JSONSchema> = {
         "properties": {
           "type": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Name or type of the extension",
+            "description": "Name or type of the extension.",
             "x-terminology": {
               "system": "CoverageExtensionType",
               "binding": "extensible"
@@ -4249,7 +4249,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "ratingBureau": {
             "$ref": "#/definitions/Coding",
-            "description": "Rating bureau or advisory organization (ISO, NCCI, AAIS)",
+            "description": "Rating bureau or advisory organization (ISO, NCCI, AAIS).",
             "x-terminology": {
               "system": "InsuranceBureau",
               "binding": "extensible"
@@ -4650,7 +4650,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "settled",
               "judgment"
             ],
-            "description": "Litigation status",
+            "description": "Litigation status.",
             "x-terminology": {
               "system": "LitigationStatus",
               "binding": "extensible"
@@ -4998,7 +4998,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "injured-party",
               "property-owner"
             ],
-            "description": "Role of the claimant in the loss",
+            "description": "Role of the claimant in the loss.",
             "x-terminology": {
               "system": "ClaimsPartyRole",
               "binding": "extensible"
@@ -5143,7 +5143,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "legal",
               "salvage"
             ],
-            "description": "Type of payment",
+            "description": "Type of payment.",
             "x-terminology": {
               "system": "PaymentType",
               "binding": "extensible"
@@ -5391,7 +5391,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "items": {
               "$ref": "#/definitions/CodeableConcept"
             },
-            "description": "Lines of business this organization writes or handles",
+            "description": "Lines of business this organization writes or handles.",
             "x-terminology": {
               "system": "LineOfBusiness",
               "binding": "preferred"
@@ -5404,7 +5404,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "non-admitted",
               "both"
             ],
-            "description": "Whether this is an admitted or non-admitted (surplus lines) carrier",
+            "description": "Whether this is an admitted or non-admitted (surplus lines) carrier.",
             "x-terminology": {
               "system": "AdmittedStatus",
               "binding": "extensible"
@@ -5448,7 +5448,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "group",
               "holding-company"
             ],
-            "description": "Organizational hierarchy level",
+            "description": "Organizational hierarchy level.",
             "x-terminology": {
               "system": "OrganizationLevel",
               "binding": "extensible"
@@ -5491,7 +5491,7 @@ export const allSchemas: Record<string, JSONSchema> = {
                 "items": {
                   "$ref": "#/definitions/CodeableConcept"
                 },
-                "description": "Lines of business this organization can bind"
+                "description": "Lines of business this organization can bind."
               }
             },
             "additionalProperties": false,
@@ -5813,7 +5813,7 @@ export const allSchemas: Record<string, JSONSchema> = {
         "properties": {
           "agency": {
             "$ref": "#/definitions/Coding",
-            "description": "Rating agency (am-best, sp, moodys, fitch)",
+            "description": "Rating agency (am-best, sp, moodys, fitch).",
             "x-terminology": {
               "system": "FinancialRatingAgency",
               "binding": "extensible"
@@ -5832,7 +5832,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "developing",
               "under-review"
             ],
-            "description": "Rating outlook",
+            "description": "Rating outlook.",
             "x-terminology": {
               "system": "FinancialRatingOutlook",
               "binding": "extensible"
@@ -5889,7 +5889,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "items": {
               "$ref": "#/definitions/CodeableConcept"
             },
-            "description": "Lines of business authorized under this appointment",
+            "description": "Lines of business authorized under this appointment.",
             "x-terminology": {
               "system": "LineOfBusiness",
               "binding": "preferred"
@@ -5901,7 +5901,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "commissionType": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Type of commission arrangement under this appointment",
+            "description": "Type of commission arrangement under this appointment.",
             "x-terminology": {
               "system": "CommissionType",
               "binding": "extensible"
@@ -5954,7 +5954,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "ratingBureau": {
             "$ref": "#/definitions/Coding",
-            "description": "Rating bureau or advisory organization (ISO, NCCI, AAIS)",
+            "description": "Rating bureau or advisory organization (ISO, NCCI, AAIS).",
             "x-terminology": {
               "system": "InsuranceBureau",
               "binding": "extensible"
@@ -6005,7 +6005,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "lineOfAuthority": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Line of authority covered by this license",
+            "description": "Line of authority covered by this license.",
             "x-terminology": {
               "system": "LineOfAuthority",
               "binding": "extensible"
@@ -6223,7 +6223,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "multi-family",
               "manufactured"
             ],
-            "description": "Type of dwelling at this location",
+            "description": "Type of dwelling at this location.",
             "x-terminology": {
               "system": "DwellingType",
               "binding": "extensible"
@@ -6245,7 +6245,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "roofShape": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Roof shape (gable, hip, flat, mansard, gambrel)",
+            "description": "Roof shape (gable, hip, flat, mansard, gambrel).",
             "x-terminology": {
               "system": "RoofGeometryType",
               "binding": "extensible"
@@ -6253,7 +6253,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "plumbingType": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Plumbing material type (copper, PVC, PEX, galvanized, polybutylene)",
+            "description": "Plumbing material type (copper, PVC, PEX, galvanized, polybutylene).",
             "x-terminology": {
               "system": "PlumbingType",
               "binding": "extensible"
@@ -6267,7 +6267,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "heatingType": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Heating system type (forced-air, radiant, heat-pump, boiler, electric)",
+            "description": "Heating system type (forced-air, radiant, heat-pump, boiler, electric).",
             "x-terminology": {
               "system": "HeatingUnit",
               "binding": "extensible"
@@ -6281,7 +6281,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "electricalType": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Electrical system type (circuit-breaker, fuse-box + amperage)",
+            "description": "Electrical system type (circuit-breaker, fuse-box + amperage).",
             "x-terminology": {
               "system": "WiringType",
               "binding": "extensible"
@@ -6295,7 +6295,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "foundationType": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Foundation type (slab, crawl-space, basement, piers, stilts)",
+            "description": "Foundation type (slab, crawl-space, basement, piers, stilts).",
             "x-terminology": {
               "system": "Foundation",
               "binding": "extensible"
@@ -6314,7 +6314,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "walk-out",
               "none"
             ],
-            "description": "Basement finish level",
+            "description": "Basement finish level.",
             "x-terminology": {
               "system": "BasementType",
               "binding": "extensible"
@@ -6331,7 +6331,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "above-ground",
               "none"
             ],
-            "description": "Type of swimming pool",
+            "description": "Type of swimming pool.",
             "x-terminology": {
               "system": "PoolType",
               "binding": "extensible"
@@ -6389,7 +6389,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "fair",
               "poor"
             ],
-            "description": "Overall physical condition of the property",
+            "description": "Overall physical condition of the property.",
             "x-terminology": {
               "system": "StructureCondition",
               "binding": "extensible"
@@ -6776,7 +6776,7 @@ export const allSchemas: Record<string, JSONSchema> = {
         "properties": {
           "type": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Valuation method (replacement-cost, actual-cash-value, agreed-value, stated-value, market-value)",
+            "description": "Valuation method (replacement-cost, actual-cash-value, agreed-value, stated-value, market-value).",
             "x-terminology": {
               "system": "ValuationType",
               "binding": "extensible"
@@ -6836,7 +6836,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "pre-action",
               "deluge"
             ],
-            "description": "Type of sprinkler system",
+            "description": "Type of sprinkler system.",
             "x-terminology": {
               "system": "SprinklerType",
               "binding": "extensible"
@@ -6869,7 +6869,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "lienholder",
               "additional-insured"
             ],
-            "description": "Type of financial interest",
+            "description": "Type of financial interest.",
             "x-terminology": {
               "system": "AdditionalInterestRole",
               "binding": "extensible"
@@ -7383,7 +7383,7 @@ export const allSchemas: Record<string, JSONSchema> = {
         "properties": {
           "type": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Valuation method (replacement-cost, actual-cash-value, agreed-value, stated-value, market-value)",
+            "description": "Valuation method (replacement-cost, actual-cash-value, agreed-value, stated-value, market-value).",
             "x-terminology": {
               "system": "ValuationType",
               "binding": "extensible"
@@ -7452,7 +7452,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "other",
               "unknown"
             ],
-            "description": "The driver's gender",
+            "description": "The driver's gender.",
             "x-terminology": {
               "system": "Gender",
               "binding": "extensible"
@@ -7476,7 +7476,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "permit",
               "unlicensed"
             ],
-            "description": "Current status of the driver's license",
+            "description": "Current status of the driver's license.",
             "x-terminology": {
               "system": "LicenseStatus",
               "binding": "extensible"
@@ -7495,7 +7495,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "permitted",
               "not-rated"
             ],
-            "description": "How this driver is rated on the policy",
+            "description": "How this driver is rated on the policy.",
             "x-terminology": {
               "system": "DriverType",
               "binding": "extensible"
@@ -7503,7 +7503,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "relationshipToInsured": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Relationship of this driver to the named insured (spouse, child, household-member, employee)",
+            "description": "Relationship of this driver to the named insured (spouse, child, household-member, employee).",
             "x-terminology": {
               "system": "RelationshipToInsured",
               "binding": "extensible"
@@ -7517,7 +7517,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "pleasure",
               "farm"
             ],
-            "description": "Primary use of the vehicle by this driver",
+            "description": "Primary use of the vehicle by this driver.",
             "x-terminology": {
               "system": "VehicleUse",
               "binding": "extensible"
@@ -7702,7 +7702,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "lienholder",
               "additional-insured"
             ],
-            "description": "Type of financial interest",
+            "description": "Type of financial interest.",
             "x-terminology": {
               "system": "AdditionalInterestRole",
               "binding": "extensible"
@@ -7949,7 +7949,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "items": {
               "$ref": "#/definitions/Coding"
             },
-            "description": "Professional designations and certifications (CPCU, ARM, CIC, AU, AINS)",
+            "description": "Professional designations and certifications (CPCU, ARM, CIC, AU, AINS).",
             "x-terminology": {
               "system": "ProfessionalDesignation",
               "binding": "extensible"
@@ -8313,7 +8313,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "lineOfAuthority": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Line of authority covered by this license",
+            "description": "Line of authority covered by this license.",
             "x-terminology": {
               "system": "LineOfAuthority",
               "binding": "extensible"
@@ -8432,7 +8432,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "items": {
               "$ref": "#/definitions/CodeableConcept"
             },
-            "description": "Lines of business or areas of specialization",
+            "description": "Lines of business or areas of specialization.",
             "x-terminology": {
               "system": "LineOfBusiness",
               "binding": "extensible"
@@ -8465,7 +8465,7 @@ export const allSchemas: Record<string, JSONSchema> = {
                 "items": {
                   "$ref": "#/definitions/CodeableConcept"
                 },
-                "description": "Lines of business this person can bind"
+                "description": "Lines of business this person can bind."
               },
               "territory": {
                 "type": "array",
@@ -8490,7 +8490,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "sub-producer",
               "wholesaler"
             ],
-            "description": "Subtype of producer role for distribution channel tracking",
+            "description": "Subtype of producer role for distribution channel tracking.",
             "x-terminology": {
               "system": "ProducerType",
               "binding": "extensible"
@@ -9852,7 +9852,7 @@ export const allSchemas: Record<string, JSONSchema> = {
         "properties": {
           "agency": {
             "$ref": "#/definitions/Coding",
-            "description": "Rating agency (am-best, sp, moodys, fitch)",
+            "description": "Rating agency (am-best, sp, moodys, fitch).",
             "x-terminology": {
               "system": "FinancialRatingAgency",
               "binding": "extensible"
@@ -9871,7 +9871,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "developing",
               "under-review"
             ],
-            "description": "Rating outlook",
+            "description": "Rating outlook.",
             "x-terminology": {
               "system": "FinancialRatingOutlook",
               "binding": "extensible"
@@ -9965,7 +9965,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "ratingBureau": {
             "$ref": "#/definitions/Coding",
-            "description": "Rating bureau or advisory organization (ISO, NCCI, AAIS)",
+            "description": "Rating bureau or advisory organization (ISO, NCCI, AAIS).",
             "x-terminology": {
               "system": "InsuranceBureau",
               "binding": "extensible"
@@ -10081,7 +10081,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "items": {
               "$ref": "#/definitions/CodeableConcept"
             },
-            "description": "Lines of business authorized under this appointment",
+            "description": "Lines of business authorized under this appointment.",
             "x-terminology": {
               "system": "LineOfBusiness",
               "binding": "preferred"
@@ -10093,7 +10093,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "commissionType": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Type of commission arrangement under this appointment",
+            "description": "Type of commission arrangement under this appointment.",
             "x-terminology": {
               "system": "CommissionType",
               "binding": "extensible"
@@ -10234,7 +10234,7 @@ export const allSchemas: Record<string, JSONSchema> = {
         "properties": {
           "category": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "The category of this split limit component (e.g., Per Person BI, Per Accident BI, PD)",
+            "description": "The category of this split limit component (e.g., Per Person BI, Per Accident BI, PD).",
             "x-terminology": {
               "system": "SplitLimitCategory",
               "binding": "extensible"
@@ -10355,7 +10355,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "earthquake",
               "all-perils"
             ],
-            "description": "How the deductible applies",
+            "description": "How the deductible applies.",
             "x-terminology": {
               "system": "DeductibleType",
               "binding": "extensible"
@@ -10368,7 +10368,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "alae-inclusive",
               "alae-exclusive"
             ],
-            "description": "How loss adjustment expenses (ALAE/LAE) interact with the deductible",
+            "description": "How loss adjustment expenses (ALAE/LAE) interact with the deductible.",
             "x-terminology": {
               "system": "AlaeApplication",
               "binding": "extensible"
@@ -10627,7 +10627,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "rateBasis": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Description of the rate basis (e.g., \"per $100 of payroll\", \"per $1,000 of revenue\")",
+            "description": "Description of the rate basis (e.g., \"per $100 of payroll\", \"per $1,000 of revenue\").",
             "x-terminology": {
               "system": "PremiumBase",
               "binding": "extensible"
@@ -10868,7 +10868,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "rateBasis": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Description of the rate basis (e.g., \"per $100 of payroll\", \"per $1,000 of revenue\")",
+            "description": "Description of the rate basis (e.g., \"per $100 of payroll\", \"per $1,000 of revenue\").",
             "x-terminology": {
               "system": "PremiumBase",
               "binding": "extensible"
@@ -11325,7 +11325,7 @@ export const allSchemas: Record<string, JSONSchema> = {
         "properties": {
           "type": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Type of commission (standard, contingent, override, bonus, profit-sharing)",
+            "description": "Type of commission (standard, contingent, override, bonus, profit-sharing).",
             "x-terminology": {
               "system": "CommissionType",
               "binding": "extensible"
@@ -11355,7 +11355,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "on-collection",
               "installment"
             ],
-            "description": "When commission is earned/payable",
+            "description": "When commission is earned/payable.",
             "x-terminology": {
               "system": "CommissionSchedule",
               "binding": "extensible"
@@ -11532,7 +11532,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "role": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Role of this party in the split (e.g., house, producer, wholesaler)",
+            "description": "Role of this party in the split (e.g., house, producer, wholesaler).",
             "x-terminology": {
               "system": "CommissionSplitRole",
               "binding": "extensible"
@@ -11601,7 +11601,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "role": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Role of this party in the split (e.g., house, producer, wholesaler)",
+            "description": "Role of this party in the split (e.g., house, producer, wholesaler).",
             "x-terminology": {
               "system": "CommissionSplitRole",
               "binding": "extensible"
@@ -12195,7 +12195,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "type": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Type of endorsement",
+            "description": "Type of endorsement.",
             "x-terminology": {
               "system": "EndorsementType",
               "binding": "extensible"
@@ -12557,7 +12557,7 @@ export const allSchemas: Record<string, JSONSchema> = {
         "properties": {
           "category": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "The category of this split limit component (e.g., Per Person BI, Per Accident BI, PD)",
+            "description": "The category of this split limit component (e.g., Per Person BI, Per Accident BI, PD).",
             "x-terminology": {
               "system": "SplitLimitCategory",
               "binding": "extensible"
@@ -12597,7 +12597,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "earthquake",
               "all-perils"
             ],
-            "description": "How the deductible applies",
+            "description": "How the deductible applies.",
             "x-terminology": {
               "system": "DeductibleType",
               "binding": "extensible"
@@ -12610,7 +12610,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "alae-inclusive",
               "alae-exclusive"
             ],
-            "description": "How loss adjustment expenses (ALAE/LAE) interact with the deductible",
+            "description": "How loss adjustment expenses (ALAE/LAE) interact with the deductible.",
             "x-terminology": {
               "system": "AlaeApplication",
               "binding": "extensible"
@@ -12677,7 +12677,7 @@ export const allSchemas: Record<string, JSONSchema> = {
         "properties": {
           "type": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Name or type of the extension",
+            "description": "Name or type of the extension.",
             "x-terminology": {
               "system": "CoverageExtensionType",
               "binding": "extensible"
@@ -13084,7 +13084,7 @@ export const allSchemas: Record<string, JSONSchema> = {
         "properties": {
           "category": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "The category of this split limit component (e.g., Per Person BI, Per Accident BI, PD)",
+            "description": "The category of this split limit component (e.g., Per Person BI, Per Accident BI, PD).",
             "x-terminology": {
               "system": "SplitLimitCategory",
               "binding": "extensible"
@@ -13124,7 +13124,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "earthquake",
               "all-perils"
             ],
-            "description": "How the deductible applies",
+            "description": "How the deductible applies.",
             "x-terminology": {
               "system": "DeductibleType",
               "binding": "extensible"
@@ -13137,7 +13137,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "alae-inclusive",
               "alae-exclusive"
             ],
-            "description": "How loss adjustment expenses (ALAE/LAE) interact with the deductible",
+            "description": "How loss adjustment expenses (ALAE/LAE) interact with the deductible.",
             "x-terminology": {
               "system": "AlaeApplication",
               "binding": "extensible"
@@ -13204,7 +13204,7 @@ export const allSchemas: Record<string, JSONSchema> = {
         "properties": {
           "type": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Name or type of the extension",
+            "description": "Name or type of the extension.",
             "x-terminology": {
               "system": "CoverageExtensionType",
               "binding": "extensible"
@@ -13476,7 +13476,7 @@ export const allSchemas: Record<string, JSONSchema> = {
         "properties": {
           "category": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "The category of this split limit component (e.g., Per Person BI, Per Accident BI, PD)",
+            "description": "The category of this split limit component (e.g., Per Person BI, Per Accident BI, PD).",
             "x-terminology": {
               "system": "SplitLimitCategory",
               "binding": "extensible"
@@ -13507,7 +13507,7 @@ export const allSchemas: Record<string, JSONSchema> = {
         "properties": {
           "type": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Name or type of the extension",
+            "description": "Name or type of the extension.",
             "x-terminology": {
               "system": "CoverageExtensionType",
               "binding": "extensible"
@@ -13813,7 +13813,7 @@ export const allSchemas: Record<string, JSONSchema> = {
         "properties": {
           "lineOfBusiness": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Line of business this premium applies to",
+            "description": "Line of business this premium applies to.",
             "x-terminology": {
               "system": "LineOfBusiness",
               "binding": "preferred"
@@ -13993,7 +13993,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "injured-party",
               "property-owner"
             ],
-            "description": "Role of the claimant in the loss",
+            "description": "Role of the claimant in the loss.",
             "x-terminology": {
               "system": "ClaimsPartyRole",
               "binding": "extensible"
@@ -14279,7 +14279,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "legal",
               "salvage"
             ],
-            "description": "Type of payment",
+            "description": "Type of payment.",
             "x-terminology": {
               "system": "PaymentType",
               "binding": "extensible"
@@ -14331,7 +14331,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "legal",
               "salvage"
             ],
-            "description": "Type of payment",
+            "description": "Type of payment.",
             "x-terminology": {
               "system": "PaymentType",
               "binding": "extensible"
@@ -14601,7 +14601,7 @@ export const allSchemas: Record<string, JSONSchema> = {
         "properties": {
           "type": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Valuation method (replacement-cost, actual-cash-value, agreed-value, stated-value, market-value)",
+            "description": "Valuation method (replacement-cost, actual-cash-value, agreed-value, stated-value, market-value).",
             "x-terminology": {
               "system": "ValuationType",
               "binding": "extensible"
@@ -14744,7 +14744,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "lineOfAuthority": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Line of authority covered by this license",
+            "description": "Line of authority covered by this license.",
             "x-terminology": {
               "system": "LineOfAuthority",
               "binding": "extensible"
@@ -14867,7 +14867,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "other",
               "unknown"
             ],
-            "description": "The driver's gender",
+            "description": "The driver's gender.",
             "x-terminology": {
               "system": "Gender",
               "binding": "extensible"
@@ -14891,7 +14891,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "permit",
               "unlicensed"
             ],
-            "description": "Current status of the driver's license",
+            "description": "Current status of the driver's license.",
             "x-terminology": {
               "system": "LicenseStatus",
               "binding": "extensible"
@@ -14910,7 +14910,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "permitted",
               "not-rated"
             ],
-            "description": "How this driver is rated on the policy",
+            "description": "How this driver is rated on the policy.",
             "x-terminology": {
               "system": "DriverType",
               "binding": "extensible"
@@ -14918,7 +14918,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           },
           "relationshipToInsured": {
             "$ref": "#/definitions/CodeableConcept",
-            "description": "Relationship of this driver to the named insured (spouse, child, household-member, employee)",
+            "description": "Relationship of this driver to the named insured (spouse, child, household-member, employee).",
             "x-terminology": {
               "system": "RelationshipToInsured",
               "binding": "extensible"
@@ -14932,7 +14932,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "pleasure",
               "farm"
             ],
-            "description": "Primary use of the vehicle by this driver",
+            "description": "Primary use of the vehicle by this driver.",
             "x-terminology": {
               "system": "VehicleUse",
               "binding": "extensible"
@@ -15322,7 +15322,7 @@ export const allSchemas: Record<string, JSONSchema> = {
               "lienholder",
               "additional-insured"
             ],
-            "description": "Type of financial interest",
+            "description": "Type of financial interest.",
             "x-terminology": {
               "system": "AdditionalInterestRole",
               "binding": "extensible"
