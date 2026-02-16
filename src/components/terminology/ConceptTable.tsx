@@ -19,7 +19,8 @@ export function ConceptTable({ concepts }: { concepts: Concept[] }) {
       (c) =>
         c.code.toLowerCase().includes(q) ||
         c.display?.toLowerCase().includes(q) ||
-        c.definition?.toLowerCase().includes(q)
+        c.definition?.toLowerCase().includes(q) ||
+        c.designation?.some((d) => d.value.toLowerCase().includes(q))
     );
   }, [concepts, filter]);
 
@@ -51,6 +52,11 @@ export function ConceptTable({ concepts }: { concepts: Concept[] }) {
               </Table.Td>
               <Table.Td>
                 <Text size="sm">{c.display}</Text>
+                {c.designation?.map((d, i) => (
+                  <Text key={i} size="xs" c="dimmed">
+                    {d.language ? `${d.language}: ` : ''}{d.value}
+                  </Text>
+                ))}
               </Table.Td>
               <Table.Td>
                 <Text size="sm" c="dimmed" lineClamp={2}>

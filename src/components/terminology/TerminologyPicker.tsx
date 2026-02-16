@@ -147,7 +147,10 @@ function SystemBrowser({
     (c) =>
       !search ||
       c.code.toLowerCase().includes(search.toLowerCase()) ||
-      c.display?.toLowerCase().includes(search.toLowerCase())
+      c.display?.toLowerCase().includes(search.toLowerCase()) ||
+      c.designation?.some((d) =>
+        d.value.toLowerCase().includes(search.toLowerCase())
+      )
   );
 
   return (
@@ -185,6 +188,11 @@ function SystemBrowser({
                 </Table.Td>
                 <Table.Td>
                   <Text size="sm">{c.display}</Text>
+                  {c.designation?.map((d, i) => (
+                    <Text key={i} size="xs" c="dimmed">
+                      {d.language ? `${d.language}: ` : ''}{d.value}
+                    </Text>
+                  ))}
                 </Table.Td>
                 <Table.Td>
                   <Button
