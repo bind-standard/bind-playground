@@ -12,7 +12,13 @@
 	"main": "@tanstack/react-start/server-entry",
 	"observability": {
 		"enabled": true
-	}
+	},
+	"routes": [
+		{
+			"zone_name": "bind-standard.org",
+			"pattern": "playground.bind-standard.org/*"
+		}
+	]
 	/**
 	 * Smart Placement
 	 * https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
