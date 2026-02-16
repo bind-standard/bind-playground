@@ -15,6 +15,7 @@ import {
   IconBook,
   IconBuildingFactory,
   IconPackage,
+  IconSend,
   IconArrowRight,
 } from '@tabler/icons-react';
 
@@ -75,6 +76,16 @@ function HomePage() {
             >
               Bundle
             </Button>
+            <Button
+              component={Link}
+              to="/exchange"
+              variant="light"
+              color="orange"
+              radius="xl"
+              size="md"
+            >
+              Exchange
+            </Button>
           </Group>
         </Box>
 
@@ -134,7 +145,7 @@ function HomePage() {
         </Card>
 
         {/* Feature cards */}
-        <SimpleGrid cols={{ base: 1, sm: 3 }} spacing="md">
+        <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
           <Card padding="lg">
             <Stack gap="sm">
               <ThemeIcon size="xl" variant="light">
@@ -205,6 +216,31 @@ function HomePage() {
                 rightSection={<IconArrowRight size={14} />}
               >
                 View Bundle
+              </Button>
+            </Stack>
+          </Card>
+
+          <Card padding="lg">
+            <Stack gap="sm">
+              <ThemeIcon size="xl" variant="light" color="orange">
+                <IconSend size={24} />
+              </ThemeIcon>
+              <Text fw={600} size="lg">
+                Exchange
+              </Text>
+              <Text size="sm" c="dimmed">
+                Sign your bundle with ES256 keys, encrypt it with AES-256-GCM,
+                and send it via the BIND Exchange. Recipients get a passcode
+                and a bindx:// link to retrieve and decrypt.
+              </Text>
+              <Button
+                component={Link}
+                to="/exchange"
+                variant="light"
+                color="orange"
+                rightSection={<IconArrowRight size={14} />}
+              >
+                Sign & Send
               </Button>
             </Stack>
           </Card>

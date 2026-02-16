@@ -516,11 +516,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "Legal name of the insured entity"
           },
           "type": {
-            "type": "string",
-            "enum": [
-              "individual",
-              "organization"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Whether the insured is an individual or an organization.",
             "x-terminology": {
               "system": "InsuredType",
@@ -613,13 +609,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "format": "date"
           },
           "gender": {
-            "type": "string",
-            "enum": [
-              "male",
-              "female",
-              "other",
-              "unknown"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Gender of the individual insured.",
             "x-terminology": {
               "system": "Gender",
@@ -627,14 +617,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             }
           },
           "maritalStatus": {
-            "type": "string",
-            "enum": [
-              "single",
-              "married",
-              "divorced",
-              "widowed",
-              "domestic-partner"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Marital status of the individual insured.",
             "x-terminology": {
               "system": "MaritalStatus",
@@ -762,6 +745,24 @@ export const allSchemas: Record<string, JSONSchema> = {
             "display": "General Liability"
           }
         ]
+      },
+      "CodeableConcept": {
+        "type": "object",
+        "properties": {
+          "coding": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Coding"
+            },
+            "description": "Code(s) from formal code systems"
+          },
+          "text": {
+            "type": "string",
+            "description": "Plain text representation of the concept"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A concept with a coding and optional text. Wraps one or more Coding values with a human-readable summary."
       },
       "Address": {
         "type": "object",
@@ -928,24 +929,6 @@ export const allSchemas: Record<string, JSONSchema> = {
         ],
         "additionalProperties": false,
         "description": "Contact information for a person or organization."
-      },
-      "CodeableConcept": {
-        "type": "object",
-        "properties": {
-          "coding": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/Coding"
-            },
-            "description": "Code(s) from formal code systems"
-          },
-          "text": {
-            "type": "string",
-            "description": "Plain text representation of the concept"
-          }
-        },
-        "additionalProperties": false,
-        "description": "A concept with a coding and optional text. Wraps one or more Coding values with a human-readable summary."
       },
       "Reference": {
         "type": "object",
@@ -1274,12 +1257,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "Target premium range, if the broker has a budget in mind."
           },
           "submissionType": {
-            "type": "string",
-            "enum": [
-              "new-business",
-              "renewal",
-              "remarket"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Is this a new business submission or a renewal?",
             "x-terminology": {
               "system": "SubmissionType",
@@ -2238,11 +2216,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             }
           },
           "coverageForm": {
-            "type": "string",
-            "enum": [
-              "occurrence",
-              "claims-made"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Policy form (e.g., occurrence, claims-made).",
             "x-terminology": {
               "system": "CoverageForm",
@@ -2280,16 +2254,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "Policy documents (dec page, forms, endorsements)"
           },
           "transactionType": {
-            "type": "string",
-            "enum": [
-              "new-business",
-              "endorsement",
-              "renewal",
-              "reinstatement",
-              "reissue",
-              "cancellation",
-              "non-renewal"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Type of policy transaction (new-business, endorsement, renewal, etc.)",
             "x-terminology": {
               "system": "TransactionType",
@@ -2297,13 +2262,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             }
           },
           "billingMethod": {
-            "type": "string",
-            "enum": [
-              "direct-bill",
-              "agency-bill",
-              "pay-as-you-go",
-              "premium-finance"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Billing method for premium collection.",
             "x-terminology": {
               "system": "BillingMethod",
@@ -2311,13 +2270,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             }
           },
           "billingFrequency": {
-            "type": "string",
-            "enum": [
-              "annual",
-              "semi-annual",
-              "quarterly",
-              "monthly"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Premium payment frequency.",
             "x-terminology": {
               "system": "BillingFrequency",
@@ -2580,13 +2533,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "Individual producer who earned the commission (PersonRole reference)"
           },
           "schedule": {
-            "type": "string",
-            "enum": [
-              "on-binding",
-              "on-effective",
-              "on-collection",
-              "installment"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "When commission is earned/payable.",
             "x-terminology": {
               "system": "CommissionSchedule",
@@ -2979,20 +2926,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "The deductible amount (required for fixed-amount deductibles, optional for percentage-based)"
           },
           "type": {
-            "type": "string",
-            "enum": [
-              "per-occurrence",
-              "per-claim",
-              "aggregate",
-              "annual-aggregate",
-              "per-employee",
-              "per-project",
-              "percentage",
-              "hurricane",
-              "wind-hail",
-              "earthquake",
-              "all-perils"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "How the deductible applies.",
             "x-terminology": {
               "system": "DeductibleType",
@@ -3000,12 +2934,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             }
           },
           "application": {
-            "type": "string",
-            "enum": [
-              "loss-only",
-              "alae-inclusive",
-              "alae-exclusive"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "How loss adjustment expenses (ALAE/LAE) interact with the deductible.",
             "x-terminology": {
               "system": "AlaeApplication",
@@ -3222,14 +3151,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "$ref": "#/definitions/Reference"
           },
           "role": {
-            "type": "string",
-            "enum": [
-              "mortgagee",
-              "loss-payee",
-              "additional-insured",
-              "certificate-holder",
-              "lienholder"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "x-terminology": {
               "system": "AdditionalInterestRole",
               "binding": "extensible"
@@ -3241,12 +3163,7 @@ export const allSchemas: Record<string, JSONSchema> = {
           "subtypes": {
             "type": "array",
             "items": {
-              "type": "string",
-              "enum": [
-                "blanket",
-                "scheduled",
-                "primary-non-contributory"
-              ]
+              "$ref": "#/definitions/CodeableConcept"
             },
             "x-terminology": {
               "system": "AdditionalInterestSubtype",
@@ -3282,16 +3199,7 @@ export const allSchemas: Record<string, JSONSchema> = {
         "type": "object",
         "properties": {
           "transactionType": {
-            "type": "string",
-            "enum": [
-              "new-business",
-              "endorsement",
-              "renewal",
-              "reinstatement",
-              "reissue",
-              "cancellation",
-              "non-renewal"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "x-terminology": {
               "system": "TransactionType",
               "binding": "extensible"
@@ -3357,12 +3265,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "format": "date"
           },
           "formType": {
-            "type": "string",
-            "enum": [
-              "bureau",
-              "proprietary",
-              "manuscript"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "x-terminology": {
               "system": "FormType",
               "binding": "extensible"
@@ -3811,20 +3714,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "The deductible amount (required for fixed-amount deductibles, optional for percentage-based)"
           },
           "type": {
-            "type": "string",
-            "enum": [
-              "per-occurrence",
-              "per-claim",
-              "aggregate",
-              "annual-aggregate",
-              "per-employee",
-              "per-project",
-              "percentage",
-              "hurricane",
-              "wind-hail",
-              "earthquake",
-              "all-perils"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "How the deductible applies.",
             "x-terminology": {
               "system": "DeductibleType",
@@ -3832,12 +3722,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             }
           },
           "application": {
-            "type": "string",
-            "enum": [
-              "loss-only",
-              "alae-inclusive",
-              "alae-exclusive"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "How loss adjustment expenses (ALAE/LAE) interact with the deductible.",
             "x-terminology": {
               "system": "AlaeApplication",
@@ -4454,12 +4339,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "$ref": "#/definitions/CodeableConcept"
           },
           "type": {
-            "type": "string",
-            "enum": [
-              "warranty",
-              "protective-safeguard",
-              "condition"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "x-terminology": {
               "system": "PolicyConditionType",
               "binding": "extensible"
@@ -4504,12 +4384,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "format": "date"
           },
           "formType": {
-            "type": "string",
-            "enum": [
-              "bureau",
-              "proprietary",
-              "manuscript"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "x-terminology": {
               "system": "FormType",
               "binding": "extensible"
@@ -4551,6 +4426,486 @@ export const allSchemas: Record<string, JSONSchema> = {
     },
     "$id": "https://bind-standard.org/schema/Coverage",
     "title": "Coverage"
+  },
+  "Certificate": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$ref": "#/definitions/Certificate",
+    "definitions": {
+      "Certificate": {
+        "type": "object",
+        "properties": {
+          "resourceType": {
+            "type": "string",
+            "const": "Certificate",
+            "description": "Discriminator field identifying the BIND resource type"
+          },
+          "id": {
+            "type": "string",
+            "description": "Logical id of this resource. Assigned by the server or originating system."
+          },
+          "meta": {
+            "$ref": "#/definitions/Meta",
+            "description": "Metadata about the resource"
+          },
+          "certificateNumber": {
+            "type": "string"
+          },
+          "insured": {
+            "$ref": "#/definitions/Reference"
+          },
+          "holder": {
+            "$ref": "#/definitions/CertificateHolder"
+          },
+          "coverageSummaries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/CoverageSummary"
+            }
+          },
+          "issuedDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "cancellationNoticeDays": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "holder",
+          "insured",
+          "resourceType"
+        ],
+        "additionalProperties": false,
+        "description": "A Certificate of Insurance (COI) proving coverage to a third party.",
+        "examples": [
+          {
+            "resourceType": "Certificate",
+            "id": "cert-001",
+            "certificateNumber": "COI-2025-001",
+            "insured": {
+              "reference": "Insured/ins-001",
+              "display": "Acme Corp"
+            },
+            "holder": {
+              "name": "BigCo Contracting",
+              "isAdditionalInsured": true
+            },
+            "issuedDate": "2025-06-15",
+            "cancellationNoticeDays": 30
+          }
+        ]
+      },
+      "Meta": {
+        "type": "object",
+        "properties": {
+          "versionId": {
+            "type": "string",
+            "description": "Version-specific identifier for this resource version. Changes each time the resource is updated."
+          },
+          "lastUpdated": {
+            "type": "string",
+            "description": "When this resource was last updated.",
+            "format": "date-time"
+          },
+          "source": {
+            "type": "string",
+            "description": "URI identifying the originating system that created or last modified this resource.",
+            "format": "uri"
+          },
+          "tag": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Coding"
+            },
+            "description": "Security or access control tags"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Metadata about a resource instance. Tracks versioning, provenance, and timestamps."
+      },
+      "Coding": {
+        "type": "object",
+        "properties": {
+          "system": {
+            "type": "string",
+            "description": "The code system URI that defines the code.",
+            "format": "uri"
+          },
+          "code": {
+            "type": "string",
+            "description": "The code value from the code system"
+          },
+          "display": {
+            "type": "string",
+            "description": "Human-readable display text for the code"
+          }
+        },
+        "required": [
+          "code"
+        ],
+        "additionalProperties": false,
+        "description": "A coded value from a defined code system. Used throughout BIND for standardized enumerations.",
+        "examples": [
+          {
+            "system": "https://bind.codes/line-of-business",
+            "code": "GL",
+            "display": "General Liability"
+          }
+        ]
+      },
+      "Reference": {
+        "type": "object",
+        "properties": {
+          "reference": {
+            "type": "string",
+            "description": "Relative or absolute reference to another resource. Format: `{ResourceType}/{id}` for relative references."
+          },
+          "type": {
+            "type": "string",
+            "description": "The resource type being referenced"
+          },
+          "display": {
+            "type": "string",
+            "description": "Text alternative for the reference (e.g. display name)"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A reference from one BIND resource to another.",
+        "examples": [
+          {
+            "reference": "Insured/ins-789",
+            "display": "Acme Corp"
+          }
+        ]
+      },
+      "CertificateHolder": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "address": {
+            "$ref": "#/definitions/Address"
+          },
+          "isAdditionalInsured": {
+            "type": "boolean"
+          },
+          "waiverOfSubrogation": {
+            "type": "boolean"
+          },
+          "primaryNonContributory": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false,
+        "description": "A third party requesting proof of insurance."
+      },
+      "Address": {
+        "type": "object",
+        "properties": {
+          "use": {
+            "type": "string",
+            "enum": [
+              "work",
+              "mailing",
+              "billing",
+              "loss-location",
+              "home",
+              "old"
+            ],
+            "description": "Purpose of this address"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "postal",
+              "physical",
+              "both"
+            ],
+            "description": "The type of address (postal, physical, or both)"
+          },
+          "text": {
+            "type": "string",
+            "description": "Full unstructured text representation of the address"
+          },
+          "line": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Street address lines"
+          },
+          "city": {
+            "type": "string",
+            "description": "City or municipality"
+          },
+          "district": {
+            "type": "string",
+            "description": "County or district. Critical for insurance rating territories and jurisdiction determination."
+          },
+          "state": {
+            "type": "string",
+            "description": "State, province, or region"
+          },
+          "postalCode": {
+            "type": "string",
+            "description": "Postal / ZIP code"
+          },
+          "country": {
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2 country code.",
+            "default": "US"
+          },
+          "period": {
+            "$ref": "#/definitions/Period",
+            "description": "Period during which this address was/is in use"
+          },
+          "geoPoint": {
+            "$ref": "#/definitions/GeoPoint",
+            "description": "Geographic coordinates of this address"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A physical or mailing address.",
+        "examples": [
+          {
+            "use": "work",
+            "type": "both",
+            "line": [
+              "123 Main St",
+              "Suite 400"
+            ],
+            "city": "Hartford",
+            "state": "CT",
+            "postalCode": "06103",
+            "country": "US",
+            "district": "Hartford County"
+          }
+        ]
+      },
+      "Period": {
+        "type": "object",
+        "properties": {
+          "start": {
+            "type": "string",
+            "description": "Start of the period (inclusive).",
+            "format": "date"
+          },
+          "end": {
+            "type": "string",
+            "description": "End of the period (inclusive).",
+            "format": "date"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A time period defined by a start and/or end date. Used for policy terms, coverage periods, etc.",
+        "examples": [
+          {
+            "start": "2025-01-01",
+            "end": "2026-01-01"
+          }
+        ]
+      },
+      "GeoPoint": {
+        "type": "object",
+        "properties": {
+          "latitude": {
+            "type": "number",
+            "description": "Latitude in decimal degrees.",
+            "minimum": -90,
+            "maximum": 90
+          },
+          "longitude": {
+            "type": "number",
+            "description": "Longitude in decimal degrees.",
+            "minimum": -180,
+            "maximum": 180
+          },
+          "altitude": {
+            "type": "number",
+            "description": "Altitude in meters above sea level"
+          }
+        },
+        "required": [
+          "latitude",
+          "longitude"
+        ],
+        "additionalProperties": false,
+        "description": "A geographic point in WGS84 coordinates. Used for precise location of insured properties, loss locations, etc."
+      },
+      "CoverageSummary": {
+        "type": "object",
+        "properties": {
+          "lineOfBusiness": {
+            "$ref": "#/definitions/CodeableConcept",
+            "x-terminology": {
+              "system": "LineOfBusiness",
+              "binding": "preferred"
+            }
+          },
+          "policy": {
+            "$ref": "#/definitions/Reference"
+          },
+          "carrier": {
+            "$ref": "#/definitions/Reference"
+          },
+          "effectivePeriod": {
+            "$ref": "#/definitions/Period"
+          },
+          "limits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/CoverageLimit"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "description": "A summary of coverage included on a certificate."
+      },
+      "CodeableConcept": {
+        "type": "object",
+        "properties": {
+          "coding": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Coding"
+            },
+            "description": "Code(s) from formal code systems"
+          },
+          "text": {
+            "type": "string",
+            "description": "Plain text representation of the concept"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A concept with a coding and optional text. Wraps one or more Coding values with a human-readable summary."
+      },
+      "CoverageLimit": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/definitions/CodeableConcept",
+            "description": "The type of limit (Each Occurrence, Aggregate, Per Person, etc.)",
+            "x-terminology": {
+              "system": "CoverageLimitType",
+              "binding": "extensible"
+            }
+          },
+          "amount": {
+            "$ref": "#/definitions/Money",
+            "description": "The limit amount (either amount or splitAmounts should be present)"
+          },
+          "splitAmounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/SplitLimitComponent"
+            },
+            "description": "Split limit components (e.g., auto liability 100/300/100)"
+          },
+          "shared": {
+            "type": "boolean",
+            "description": "Whether this limit is shared across multiple coverages"
+          },
+          "basisType": {
+            "type": "string",
+            "description": "Basis type for the limit (e.g., \"per occurrence\", \"per location\", \"per project\")"
+          },
+          "isSublimit": {
+            "type": "boolean",
+            "description": "Whether this is a sublimit of a broader coverage limit"
+          },
+          "parentLimit": {
+            "$ref": "#/definitions/CodeableConcept",
+            "description": "The parent limit this sublimit falls under"
+          },
+          "attachmentPoint": {
+            "$ref": "#/definitions/Money",
+            "description": "Attachment point for excess/umbrella layers"
+          },
+          "eroded": {
+            "$ref": "#/definitions/Money",
+            "description": "Amount of the limit that has been eroded by losses"
+          },
+          "remaining": {
+            "$ref": "#/definitions/Money",
+            "description": "Remaining limit after erosion"
+          },
+          "reinstatements": {
+            "type": "number",
+            "description": "Number of times the limit can be reinstated after a loss"
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "additionalProperties": false,
+        "description": "A specific limit of insurance within a coverage. Commercial policies typically have multiple limit types (e.g., per-occurrence, aggregate, per-person).",
+        "examples": [
+          {
+            "type": {
+              "text": "Each Occurrence"
+            },
+            "amount": {
+              "value": 1000000,
+              "currency": "USD"
+            }
+          }
+        ]
+      },
+      "Money": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number",
+            "description": "Numeric amount. Represented as a number; precision should be maintained by the consuming system."
+          },
+          "currency": {
+            "type": "string",
+            "description": "ISO 4217 currency code.",
+            "default": "USD"
+          }
+        },
+        "required": [
+          "value"
+        ],
+        "additionalProperties": false,
+        "description": "A monetary amount with currency.",
+        "examples": [
+          {
+            "value": 1000000,
+            "currency": "USD"
+          }
+        ]
+      },
+      "SplitLimitComponent": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "$ref": "#/definitions/CodeableConcept",
+            "description": "The category of this split limit component (e.g., Per Person BI, Per Accident BI, PD).",
+            "x-terminology": {
+              "system": "SplitLimitCategory",
+              "binding": "extensible"
+            }
+          },
+          "amount": {
+            "$ref": "#/definitions/Money",
+            "description": "The limit amount for this component"
+          }
+        },
+        "required": [
+          "category",
+          "amount"
+        ],
+        "additionalProperties": false,
+        "description": "A component of a split limit structure. Used when a coverage has separate limits for different categories (e.g., auto liability split limits: 100/300/100)."
+      }
+    },
+    "$id": "https://bind-standard.org/schema/Certificate",
+    "title": "Certificate"
   },
   "Claim": {
     "$schema": "http://json-schema.org/draft-07/schema#",
@@ -4642,14 +4997,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "Financial reserves and payment summary"
           },
           "litigationStatus": {
-            "type": "string",
-            "enum": [
-              "none",
-              "threatened",
-              "filed",
-              "settled",
-              "judgment"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Litigation status.",
             "x-terminology": {
               "system": "LitigationStatus",
@@ -4990,14 +5338,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "Name of the claimant"
           },
           "role": {
-            "type": "string",
-            "enum": [
-              "insured",
-              "employee",
-              "third-party",
-              "injured-party",
-              "property-owner"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Role of the claimant in the loss.",
             "x-terminology": {
               "system": "ClaimsPartyRole",
@@ -5135,14 +5476,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "Amount of the payment"
           },
           "paymentType": {
-            "type": "string",
-            "enum": [
-              "indemnity",
-              "expense",
-              "medical",
-              "legal",
-              "salvage"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Type of payment.",
             "x-terminology": {
               "system": "PaymentType",
@@ -5201,14 +5535,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "$ref": "#/definitions/Reference"
           },
           "role": {
-            "type": "string",
-            "enum": [
-              "adjuster",
-              "appraiser",
-              "investigator",
-              "defense-counsel",
-              "expert"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "x-terminology": {
               "system": "ClaimsAssignmentRole",
               "binding": "extensible"
@@ -5238,13 +5565,7 @@ export const allSchemas: Record<string, JSONSchema> = {
         "type": "object",
         "properties": {
           "reportType": {
-            "type": "string",
-            "enum": [
-              "police",
-              "fire",
-              "incident",
-              "appraisal"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "x-terminology": {
               "system": "ClaimReportType",
               "binding": "extensible"
@@ -5289,13 +5610,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "$ref": "#/definitions/Money"
           },
           "status": {
-            "type": "string",
-            "enum": [
-              "identified",
-              "in-progress",
-              "recovered",
-              "abandoned"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "x-terminology": {
               "system": "SubrogationStatus",
               "binding": "extensible"
@@ -5398,12 +5713,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             }
           },
           "admittedStatus": {
-            "type": "string",
-            "enum": [
-              "admitted",
-              "non-admitted",
-              "both"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Whether this is an admitted or non-admitted (surplus lines) carrier.",
             "x-terminology": {
               "system": "AdmittedStatus",
@@ -5441,13 +5751,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             }
           },
           "organizationLevel": {
-            "type": "string",
-            "enum": [
-              "legal-entity",
-              "operating-company",
-              "group",
-              "holding-company"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Organizational hierarchy level.",
             "x-terminology": {
               "system": "OrganizationLevel",
@@ -5824,14 +6128,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "The rating value (e.g., \"A+\", \"AA-\", \"Aa3\")"
           },
           "outlook": {
-            "type": "string",
-            "enum": [
-              "stable",
-              "positive",
-              "negative",
-              "developing",
-              "under-review"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Rating outlook.",
             "x-terminology": {
               "system": "FinancialRatingOutlook",
@@ -6213,16 +6510,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "Structured asset valuations for this location. Supersedes buildingValue, contentsValue, businessIncomeValue for richer detail including valuation method and provenance."
           },
           "dwellingType": {
-            "type": "string",
-            "enum": [
-              "single-family",
-              "condo",
-              "townhouse",
-              "mobile-home",
-              "duplex",
-              "multi-family",
-              "manufactured"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Type of dwelling at this location.",
             "x-terminology": {
               "system": "DwellingType",
@@ -6306,14 +6594,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "Whether the dwelling has a basement"
           },
           "basementType": {
-            "type": "string",
-            "enum": [
-              "finished",
-              "unfinished",
-              "partially-finished",
-              "walk-out",
-              "none"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Basement finish level.",
             "x-terminology": {
               "system": "BasementType",
@@ -6325,12 +6606,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "Whether the property has a swimming pool"
           },
           "poolType": {
-            "type": "string",
-            "enum": [
-              "in-ground",
-              "above-ground",
-              "none"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Type of swimming pool.",
             "x-terminology": {
               "system": "PoolType",
@@ -6382,13 +6658,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             }
           },
           "propertyCondition": {
-            "type": "string",
-            "enum": [
-              "excellent",
-              "good",
-              "fair",
-              "poor"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Overall physical condition of the property.",
             "x-terminology": {
               "system": "StructureCondition",
@@ -6829,13 +7099,7 @@ export const allSchemas: Record<string, JSONSchema> = {
         "type": "object",
         "properties": {
           "type": {
-            "type": "string",
-            "enum": [
-              "wet",
-              "dry",
-              "pre-action",
-              "deluge"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Type of sprinkler system.",
             "x-terminology": {
               "system": "SprinklerType",
@@ -6862,13 +7126,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "Name of the lienholder or mortgagee"
           },
           "type": {
-            "type": "string",
-            "enum": [
-              "mortgagee",
-              "loss-payee",
-              "lienholder",
-              "additional-insured"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Type of financial interest.",
             "x-terminology": {
               "system": "AdditionalInterestRole",
@@ -7445,13 +7703,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "format": "date"
           },
           "gender": {
-            "type": "string",
-            "enum": [
-              "male",
-              "female",
-              "other",
-              "unknown"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "The driver's gender.",
             "x-terminology": {
               "system": "Gender",
@@ -7467,15 +7719,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "Two-letter state code where the license was issued"
           },
           "licenseStatus": {
-            "type": "string",
-            "enum": [
-              "valid",
-              "suspended",
-              "revoked",
-              "expired",
-              "permit",
-              "unlicensed"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Current status of the driver's license.",
             "x-terminology": {
               "system": "LicenseStatus",
@@ -7488,13 +7732,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "format": "date"
           },
           "driverStatus": {
-            "type": "string",
-            "enum": [
-              "rated",
-              "excluded",
-              "permitted",
-              "not-rated"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "How this driver is rated on the policy.",
             "x-terminology": {
               "system": "DriverType",
@@ -7510,13 +7748,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             }
           },
           "primaryUse": {
-            "type": "string",
-            "enum": [
-              "commute",
-              "business",
-              "pleasure",
-              "farm"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Primary use of the vehicle by this driver.",
             "x-terminology": {
               "system": "VehicleUse",
@@ -7695,13 +7927,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "Name of the lienholder or mortgagee"
           },
           "type": {
-            "type": "string",
-            "enum": [
-              "mortgagee",
-              "loss-payee",
-              "lienholder",
-              "additional-insured"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Type of financial interest.",
             "x-terminology": {
               "system": "AdditionalInterestRole",
@@ -8483,13 +8709,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "Reference to the person this role reports to (PersonRole reference)"
           },
           "producerType": {
-            "type": "string",
-            "enum": [
-              "producing-agent",
-              "servicing-agent",
-              "sub-producer",
-              "wholesaler"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Subtype of producer role for distribution channel tracking.",
             "x-terminology": {
               "system": "ProducerType",
@@ -9863,14 +10083,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "The rating value (e.g., \"A+\", \"AA-\", \"Aa3\")"
           },
           "outlook": {
-            "type": "string",
-            "enum": [
-              "stable",
-              "positive",
-              "negative",
-              "developing",
-              "under-review"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Rating outlook.",
             "x-terminology": {
               "system": "FinancialRatingOutlook",
@@ -9935,6 +10148,24 @@ export const allSchemas: Record<string, JSONSchema> = {
             "display": "General Liability"
           }
         ]
+      },
+      "CodeableConcept": {
+        "type": "object",
+        "properties": {
+          "coding": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Coding"
+            },
+            "description": "Code(s) from formal code systems"
+          },
+          "text": {
+            "type": "string",
+            "description": "Plain text representation of the concept"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A concept with a coding and optional text. Wraps one or more Coding values with a human-readable summary."
       }
     },
     "$id": "https://bind-standard.org/schema/FinancialRating",
@@ -10341,20 +10572,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "The deductible amount (required for fixed-amount deductibles, optional for percentage-based)"
           },
           "type": {
-            "type": "string",
-            "enum": [
-              "per-occurrence",
-              "per-claim",
-              "aggregate",
-              "annual-aggregate",
-              "per-employee",
-              "per-project",
-              "percentage",
-              "hurricane",
-              "wind-hail",
-              "earthquake",
-              "all-perils"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "How the deductible applies.",
             "x-terminology": {
               "system": "DeductibleType",
@@ -10362,12 +10580,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             }
           },
           "application": {
-            "type": "string",
-            "enum": [
-              "loss-only",
-              "alae-inclusive",
-              "alae-exclusive"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "How loss adjustment expenses (ALAE/LAE) interact with the deductible.",
             "x-terminology": {
               "system": "AlaeApplication",
@@ -11348,13 +11561,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "Individual producer who earned the commission (PersonRole reference)"
           },
           "schedule": {
-            "type": "string",
-            "enum": [
-              "on-binding",
-              "on-effective",
-              "on-collection",
-              "installment"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "When commission is earned/payable.",
             "x-terminology": {
               "system": "CommissionSchedule",
@@ -12583,20 +12790,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "The deductible amount (required for fixed-amount deductibles, optional for percentage-based)"
           },
           "type": {
-            "type": "string",
-            "enum": [
-              "per-occurrence",
-              "per-claim",
-              "aggregate",
-              "annual-aggregate",
-              "per-employee",
-              "per-project",
-              "percentage",
-              "hurricane",
-              "wind-hail",
-              "earthquake",
-              "all-perils"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "How the deductible applies.",
             "x-terminology": {
               "system": "DeductibleType",
@@ -12604,12 +12798,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             }
           },
           "application": {
-            "type": "string",
-            "enum": [
-              "loss-only",
-              "alae-inclusive",
-              "alae-exclusive"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "How loss adjustment expenses (ALAE/LAE) interact with the deductible.",
             "x-terminology": {
               "system": "AlaeApplication",
@@ -13110,20 +13299,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "The deductible amount (required for fixed-amount deductibles, optional for percentage-based)"
           },
           "type": {
-            "type": "string",
-            "enum": [
-              "per-occurrence",
-              "per-claim",
-              "aggregate",
-              "annual-aggregate",
-              "per-employee",
-              "per-project",
-              "percentage",
-              "hurricane",
-              "wind-hail",
-              "earthquake",
-              "all-perils"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "How the deductible applies.",
             "x-terminology": {
               "system": "DeductibleType",
@@ -13131,12 +13307,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             }
           },
           "application": {
-            "type": "string",
-            "enum": [
-              "loss-only",
-              "alae-inclusive",
-              "alae-exclusive"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "How loss adjustment expenses (ALAE/LAE) interact with the deductible.",
             "x-terminology": {
               "system": "AlaeApplication",
@@ -13985,14 +14156,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "Name of the claimant"
           },
           "role": {
-            "type": "string",
-            "enum": [
-              "insured",
-              "employee",
-              "third-party",
-              "injured-party",
-              "property-owner"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Role of the claimant in the loss.",
             "x-terminology": {
               "system": "ClaimsPartyRole",
@@ -14039,6 +14203,54 @@ export const allSchemas: Record<string, JSONSchema> = {
               "city": "Hartford",
               "state": "CT"
             }
+          }
+        ]
+      },
+      "CodeableConcept": {
+        "type": "object",
+        "properties": {
+          "coding": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Coding"
+            },
+            "description": "Code(s) from formal code systems"
+          },
+          "text": {
+            "type": "string",
+            "description": "Plain text representation of the concept"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A concept with a coding and optional text. Wraps one or more Coding values with a human-readable summary."
+      },
+      "Coding": {
+        "type": "object",
+        "properties": {
+          "system": {
+            "type": "string",
+            "description": "The code system URI that defines the code.",
+            "format": "uri"
+          },
+          "code": {
+            "type": "string",
+            "description": "The code value from the code system"
+          },
+          "display": {
+            "type": "string",
+            "description": "Human-readable display text for the code"
+          }
+        },
+        "required": [
+          "code"
+        ],
+        "additionalProperties": false,
+        "description": "A coded value from a defined code system. Used throughout BIND for standardized enumerations.",
+        "examples": [
+          {
+            "system": "https://bind.codes/line-of-business",
+            "code": "GL",
+            "display": "General Liability"
           }
         ]
       },
@@ -14271,14 +14483,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "Amount of the payment"
           },
           "paymentType": {
-            "type": "string",
-            "enum": [
-              "indemnity",
-              "expense",
-              "medical",
-              "legal",
-              "salvage"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Type of payment.",
             "x-terminology": {
               "system": "PaymentType",
@@ -14301,6 +14506,54 @@ export const allSchemas: Record<string, JSONSchema> = {
         ],
         "additionalProperties": false,
         "description": "An individual payment made on a claim."
+      },
+      "CodeableConcept": {
+        "type": "object",
+        "properties": {
+          "coding": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Coding"
+            },
+            "description": "Code(s) from formal code systems"
+          },
+          "text": {
+            "type": "string",
+            "description": "Plain text representation of the concept"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A concept with a coding and optional text. Wraps one or more Coding values with a human-readable summary."
+      },
+      "Coding": {
+        "type": "object",
+        "properties": {
+          "system": {
+            "type": "string",
+            "description": "The code system URI that defines the code.",
+            "format": "uri"
+          },
+          "code": {
+            "type": "string",
+            "description": "The code value from the code system"
+          },
+          "display": {
+            "type": "string",
+            "description": "Human-readable display text for the code"
+          }
+        },
+        "required": [
+          "code"
+        ],
+        "additionalProperties": false,
+        "description": "A coded value from a defined code system. Used throughout BIND for standardized enumerations.",
+        "examples": [
+          {
+            "system": "https://bind.codes/line-of-business",
+            "code": "GL",
+            "display": "General Liability"
+          }
+        ]
       }
     },
     "$id": "https://bind-standard.org/schema/ClaimFinancials",
@@ -14323,14 +14576,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "Amount of the payment"
           },
           "paymentType": {
-            "type": "string",
-            "enum": [
-              "indemnity",
-              "expense",
-              "medical",
-              "legal",
-              "salvage"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Type of payment.",
             "x-terminology": {
               "system": "PaymentType",
@@ -14376,6 +14622,54 @@ export const allSchemas: Record<string, JSONSchema> = {
           {
             "value": 1000000,
             "currency": "USD"
+          }
+        ]
+      },
+      "CodeableConcept": {
+        "type": "object",
+        "properties": {
+          "coding": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Coding"
+            },
+            "description": "Code(s) from formal code systems"
+          },
+          "text": {
+            "type": "string",
+            "description": "Plain text representation of the concept"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A concept with a coding and optional text. Wraps one or more Coding values with a human-readable summary."
+      },
+      "Coding": {
+        "type": "object",
+        "properties": {
+          "system": {
+            "type": "string",
+            "description": "The code system URI that defines the code.",
+            "format": "uri"
+          },
+          "code": {
+            "type": "string",
+            "description": "The code value from the code system"
+          },
+          "display": {
+            "type": "string",
+            "description": "Human-readable display text for the code"
+          }
+        },
+        "required": [
+          "code"
+        ],
+        "additionalProperties": false,
+        "description": "A coded value from a defined code system. Used throughout BIND for standardized enumerations.",
+        "examples": [
+          {
+            "system": "https://bind.codes/line-of-business",
+            "code": "GL",
+            "display": "General Liability"
           }
         ]
       }
@@ -14860,13 +15154,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "format": "date"
           },
           "gender": {
-            "type": "string",
-            "enum": [
-              "male",
-              "female",
-              "other",
-              "unknown"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "The driver's gender.",
             "x-terminology": {
               "system": "Gender",
@@ -14882,15 +15170,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "Two-letter state code where the license was issued"
           },
           "licenseStatus": {
-            "type": "string",
-            "enum": [
-              "valid",
-              "suspended",
-              "revoked",
-              "expired",
-              "permit",
-              "unlicensed"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Current status of the driver's license.",
             "x-terminology": {
               "system": "LicenseStatus",
@@ -14903,13 +15183,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "format": "date"
           },
           "driverStatus": {
-            "type": "string",
-            "enum": [
-              "rated",
-              "excluded",
-              "permitted",
-              "not-rated"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "How this driver is rated on the policy.",
             "x-terminology": {
               "system": "DriverType",
@@ -14925,13 +15199,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             }
           },
           "primaryUse": {
-            "type": "string",
-            "enum": [
-              "commute",
-              "business",
-              "pleasure",
-              "farm"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Primary use of the vehicle by this driver.",
             "x-terminology": {
               "system": "VehicleUse",
@@ -15315,13 +15583,7 @@ export const allSchemas: Record<string, JSONSchema> = {
             "description": "Name of the lienholder or mortgagee"
           },
           "type": {
-            "type": "string",
-            "enum": [
-              "mortgagee",
-              "loss-payee",
-              "lienholder",
-              "additional-insured"
-            ],
+            "$ref": "#/definitions/CodeableConcept",
             "description": "Type of financial interest.",
             "x-terminology": {
               "system": "AdditionalInterestRole",
@@ -15368,6 +15630,54 @@ export const allSchemas: Record<string, JSONSchema> = {
               "postalCode": "28201"
             },
             "isaoa": true
+          }
+        ]
+      },
+      "CodeableConcept": {
+        "type": "object",
+        "properties": {
+          "coding": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Coding"
+            },
+            "description": "Code(s) from formal code systems"
+          },
+          "text": {
+            "type": "string",
+            "description": "Plain text representation of the concept"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A concept with a coding and optional text. Wraps one or more Coding values with a human-readable summary."
+      },
+      "Coding": {
+        "type": "object",
+        "properties": {
+          "system": {
+            "type": "string",
+            "description": "The code system URI that defines the code.",
+            "format": "uri"
+          },
+          "code": {
+            "type": "string",
+            "description": "The code value from the code system"
+          },
+          "display": {
+            "type": "string",
+            "description": "Human-readable display text for the code"
+          }
+        },
+        "required": [
+          "code"
+        ],
+        "additionalProperties": false,
+        "description": "A coded value from a defined code system. Used throughout BIND for standardized enumerations.",
+        "examples": [
+          {
+            "system": "https://bind.codes/line-of-business",
+            "code": "GL",
+            "display": "General Liability"
           }
         ]
       },
@@ -15715,9 +16025,428 @@ export const allSchemas: Record<string, JSONSchema> = {
     },
     "$id": "https://bind-standard.org/schema/ScheduledItem",
     "title": "ScheduledItem"
+  },
+  "CertificateHolder": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$ref": "#/definitions/CertificateHolder",
+    "definitions": {
+      "CertificateHolder": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "address": {
+            "$ref": "#/definitions/Address"
+          },
+          "isAdditionalInsured": {
+            "type": "boolean"
+          },
+          "waiverOfSubrogation": {
+            "type": "boolean"
+          },
+          "primaryNonContributory": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false,
+        "description": "A third party requesting proof of insurance."
+      },
+      "Address": {
+        "type": "object",
+        "properties": {
+          "use": {
+            "type": "string",
+            "enum": [
+              "work",
+              "mailing",
+              "billing",
+              "loss-location",
+              "home",
+              "old"
+            ],
+            "description": "Purpose of this address"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "postal",
+              "physical",
+              "both"
+            ],
+            "description": "The type of address (postal, physical, or both)"
+          },
+          "text": {
+            "type": "string",
+            "description": "Full unstructured text representation of the address"
+          },
+          "line": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Street address lines"
+          },
+          "city": {
+            "type": "string",
+            "description": "City or municipality"
+          },
+          "district": {
+            "type": "string",
+            "description": "County or district. Critical for insurance rating territories and jurisdiction determination."
+          },
+          "state": {
+            "type": "string",
+            "description": "State, province, or region"
+          },
+          "postalCode": {
+            "type": "string",
+            "description": "Postal / ZIP code"
+          },
+          "country": {
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2 country code.",
+            "default": "US"
+          },
+          "period": {
+            "$ref": "#/definitions/Period",
+            "description": "Period during which this address was/is in use"
+          },
+          "geoPoint": {
+            "$ref": "#/definitions/GeoPoint",
+            "description": "Geographic coordinates of this address"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A physical or mailing address.",
+        "examples": [
+          {
+            "use": "work",
+            "type": "both",
+            "line": [
+              "123 Main St",
+              "Suite 400"
+            ],
+            "city": "Hartford",
+            "state": "CT",
+            "postalCode": "06103",
+            "country": "US",
+            "district": "Hartford County"
+          }
+        ]
+      },
+      "Period": {
+        "type": "object",
+        "properties": {
+          "start": {
+            "type": "string",
+            "description": "Start of the period (inclusive).",
+            "format": "date"
+          },
+          "end": {
+            "type": "string",
+            "description": "End of the period (inclusive).",
+            "format": "date"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A time period defined by a start and/or end date. Used for policy terms, coverage periods, etc.",
+        "examples": [
+          {
+            "start": "2025-01-01",
+            "end": "2026-01-01"
+          }
+        ]
+      },
+      "GeoPoint": {
+        "type": "object",
+        "properties": {
+          "latitude": {
+            "type": "number",
+            "description": "Latitude in decimal degrees.",
+            "minimum": -90,
+            "maximum": 90
+          },
+          "longitude": {
+            "type": "number",
+            "description": "Longitude in decimal degrees.",
+            "minimum": -180,
+            "maximum": 180
+          },
+          "altitude": {
+            "type": "number",
+            "description": "Altitude in meters above sea level"
+          }
+        },
+        "required": [
+          "latitude",
+          "longitude"
+        ],
+        "additionalProperties": false,
+        "description": "A geographic point in WGS84 coordinates. Used for precise location of insured properties, loss locations, etc."
+      }
+    },
+    "$id": "https://bind-standard.org/schema/CertificateHolder",
+    "title": "CertificateHolder"
+  },
+  "CoverageSummary": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$ref": "#/definitions/CoverageSummary",
+    "definitions": {
+      "CoverageSummary": {
+        "type": "object",
+        "properties": {
+          "lineOfBusiness": {
+            "$ref": "#/definitions/CodeableConcept",
+            "x-terminology": {
+              "system": "LineOfBusiness",
+              "binding": "preferred"
+            }
+          },
+          "policy": {
+            "$ref": "#/definitions/Reference"
+          },
+          "carrier": {
+            "$ref": "#/definitions/Reference"
+          },
+          "effectivePeriod": {
+            "$ref": "#/definitions/Period"
+          },
+          "limits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/CoverageLimit"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "description": "A summary of coverage included on a certificate."
+      },
+      "CodeableConcept": {
+        "type": "object",
+        "properties": {
+          "coding": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Coding"
+            },
+            "description": "Code(s) from formal code systems"
+          },
+          "text": {
+            "type": "string",
+            "description": "Plain text representation of the concept"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A concept with a coding and optional text. Wraps one or more Coding values with a human-readable summary."
+      },
+      "Coding": {
+        "type": "object",
+        "properties": {
+          "system": {
+            "type": "string",
+            "description": "The code system URI that defines the code.",
+            "format": "uri"
+          },
+          "code": {
+            "type": "string",
+            "description": "The code value from the code system"
+          },
+          "display": {
+            "type": "string",
+            "description": "Human-readable display text for the code"
+          }
+        },
+        "required": [
+          "code"
+        ],
+        "additionalProperties": false,
+        "description": "A coded value from a defined code system. Used throughout BIND for standardized enumerations.",
+        "examples": [
+          {
+            "system": "https://bind.codes/line-of-business",
+            "code": "GL",
+            "display": "General Liability"
+          }
+        ]
+      },
+      "Reference": {
+        "type": "object",
+        "properties": {
+          "reference": {
+            "type": "string",
+            "description": "Relative or absolute reference to another resource. Format: `{ResourceType}/{id}` for relative references."
+          },
+          "type": {
+            "type": "string",
+            "description": "The resource type being referenced"
+          },
+          "display": {
+            "type": "string",
+            "description": "Text alternative for the reference (e.g. display name)"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A reference from one BIND resource to another.",
+        "examples": [
+          {
+            "reference": "Insured/ins-789",
+            "display": "Acme Corp"
+          }
+        ]
+      },
+      "Period": {
+        "type": "object",
+        "properties": {
+          "start": {
+            "type": "string",
+            "description": "Start of the period (inclusive).",
+            "format": "date"
+          },
+          "end": {
+            "type": "string",
+            "description": "End of the period (inclusive).",
+            "format": "date"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A time period defined by a start and/or end date. Used for policy terms, coverage periods, etc.",
+        "examples": [
+          {
+            "start": "2025-01-01",
+            "end": "2026-01-01"
+          }
+        ]
+      },
+      "CoverageLimit": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/definitions/CodeableConcept",
+            "description": "The type of limit (Each Occurrence, Aggregate, Per Person, etc.)",
+            "x-terminology": {
+              "system": "CoverageLimitType",
+              "binding": "extensible"
+            }
+          },
+          "amount": {
+            "$ref": "#/definitions/Money",
+            "description": "The limit amount (either amount or splitAmounts should be present)"
+          },
+          "splitAmounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/SplitLimitComponent"
+            },
+            "description": "Split limit components (e.g., auto liability 100/300/100)"
+          },
+          "shared": {
+            "type": "boolean",
+            "description": "Whether this limit is shared across multiple coverages"
+          },
+          "basisType": {
+            "type": "string",
+            "description": "Basis type for the limit (e.g., \"per occurrence\", \"per location\", \"per project\")"
+          },
+          "isSublimit": {
+            "type": "boolean",
+            "description": "Whether this is a sublimit of a broader coverage limit"
+          },
+          "parentLimit": {
+            "$ref": "#/definitions/CodeableConcept",
+            "description": "The parent limit this sublimit falls under"
+          },
+          "attachmentPoint": {
+            "$ref": "#/definitions/Money",
+            "description": "Attachment point for excess/umbrella layers"
+          },
+          "eroded": {
+            "$ref": "#/definitions/Money",
+            "description": "Amount of the limit that has been eroded by losses"
+          },
+          "remaining": {
+            "$ref": "#/definitions/Money",
+            "description": "Remaining limit after erosion"
+          },
+          "reinstatements": {
+            "type": "number",
+            "description": "Number of times the limit can be reinstated after a loss"
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "additionalProperties": false,
+        "description": "A specific limit of insurance within a coverage. Commercial policies typically have multiple limit types (e.g., per-occurrence, aggregate, per-person).",
+        "examples": [
+          {
+            "type": {
+              "text": "Each Occurrence"
+            },
+            "amount": {
+              "value": 1000000,
+              "currency": "USD"
+            }
+          }
+        ]
+      },
+      "Money": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number",
+            "description": "Numeric amount. Represented as a number; precision should be maintained by the consuming system."
+          },
+          "currency": {
+            "type": "string",
+            "description": "ISO 4217 currency code.",
+            "default": "USD"
+          }
+        },
+        "required": [
+          "value"
+        ],
+        "additionalProperties": false,
+        "description": "A monetary amount with currency.",
+        "examples": [
+          {
+            "value": 1000000,
+            "currency": "USD"
+          }
+        ]
+      },
+      "SplitLimitComponent": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "$ref": "#/definitions/CodeableConcept",
+            "description": "The category of this split limit component (e.g., Per Person BI, Per Accident BI, PD).",
+            "x-terminology": {
+              "system": "SplitLimitCategory",
+              "binding": "extensible"
+            }
+          },
+          "amount": {
+            "$ref": "#/definitions/Money",
+            "description": "The limit amount for this component"
+          }
+        },
+        "required": [
+          "category",
+          "amount"
+        ],
+        "additionalProperties": false,
+        "description": "A component of a split limit structure. Used when a coverage has separate limits for different categories (e.g., auto liability split limits: 100/300/100)."
+      }
+    },
+    "$id": "https://bind-standard.org/schema/CoverageSummary",
+    "title": "CoverageSummary"
   }
 } as unknown as Record<string, JSONSchema>;
 
-export const resourceNames: string[] = ["Bundle","Insured","Submission","Quote","Policy","Coverage","Claim","Organization","Location","Risk","Person","PersonRole"];
+export const resourceNames: string[] = ["Bundle","Insured","Submission","Quote","Policy","Coverage","Certificate","Claim","Organization","Location","Risk","Person","PersonRole"];
 
-export const supportingNames: string[] = ["Resource","Meta","Coding","CodeableConcept","Reference","Period","Money","Quantity","Address","ContactPoint","Attachment","GeoPoint","Identifier","HumanName","GeoRegion","MoneyWithConversion","MultiCurrencyMoney","DateTimePeriod","FinancialRating","InsuranceSpecialty","CarrierAppointment","SplitLimitComponent","Deductible","Premium","PremiumBasis","PremiumAdjustment","PremiumInstallment","PremiumAllocation","Commission","CommissionTier","CommissionSplit","BundleLink","BundleEntry","BundleEntrySearch","BundleEntryRequest","BundleEntryResponse","Endorsement","EndorsementChange","CoverageLimit","CoverageExtension","Classification","PremiumLineItem","Subjectivity","Claimant","ClaimFinancials","ClaimPayment","RiskCharacteristic","AssetValuation","License","NamedDriver","DrivingViolation","Lienholder","ScheduledItem"];
+export const supportingNames: string[] = ["Resource","Meta","Coding","CodeableConcept","Reference","Period","Money","Quantity","Address","ContactPoint","Attachment","GeoPoint","Identifier","HumanName","GeoRegion","MoneyWithConversion","MultiCurrencyMoney","DateTimePeriod","FinancialRating","InsuranceSpecialty","CarrierAppointment","SplitLimitComponent","Deductible","Premium","PremiumBasis","PremiumAdjustment","PremiumInstallment","PremiumAllocation","Commission","CommissionTier","CommissionSplit","BundleLink","BundleEntry","BundleEntrySearch","BundleEntryRequest","BundleEntryResponse","Endorsement","EndorsementChange","CoverageLimit","CoverageExtension","Classification","PremiumLineItem","Subjectivity","Claimant","ClaimFinancials","ClaimPayment","RiskCharacteristic","AssetValuation","License","NamedDriver","DrivingViolation","Lienholder","ScheduledItem","CertificateHolder","CoverageSummary"];

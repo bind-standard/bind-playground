@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ExchangeRouteImport } from './routes/exchange'
 import { Route as BundleRouteImport } from './routes/bundle'
 import { Route as BuilderRouteRouteImport } from './routes/builder/route'
 import { Route as IndexRouteImport } from './routes/index'
@@ -18,6 +19,11 @@ import { Route as TerminologySystemIdRouteImport } from './routes/terminology/$s
 import { Route as BuilderResourceTypeIndexRouteImport } from './routes/builder/$resourceType/index'
 import { Route as BuilderResourceTypeEntryIndexRouteImport } from './routes/builder/$resourceType/$entryIndex'
 
+const ExchangeRoute = ExchangeRouteImport.update({
+  id: '/exchange',
+  path: '/exchange',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BundleRoute = BundleRouteImport.update({
   id: '/bundle',
   path: '/bundle',
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/builder': typeof BuilderRouteRouteWithChildren
   '/bundle': typeof BundleRoute
+  '/exchange': typeof ExchangeRoute
   '/terminology/$systemId': typeof TerminologySystemIdRoute
   '/builder/': typeof BuilderIndexRoute
   '/terminology/': typeof TerminologyIndexRoute
@@ -74,6 +81,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/bundle': typeof BundleRoute
+  '/exchange': typeof ExchangeRoute
   '/terminology/$systemId': typeof TerminologySystemIdRoute
   '/builder': typeof BuilderIndexRoute
   '/terminology': typeof TerminologyIndexRoute
@@ -85,6 +93,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/builder': typeof BuilderRouteRouteWithChildren
   '/bundle': typeof BundleRoute
+  '/exchange': typeof ExchangeRoute
   '/terminology/$systemId': typeof TerminologySystemIdRoute
   '/builder/': typeof BuilderIndexRoute
   '/terminology/': typeof TerminologyIndexRoute
@@ -97,6 +106,7 @@ export interface FileRouteTypes {
     | '/'
     | '/builder'
     | '/bundle'
+    | '/exchange'
     | '/terminology/$systemId'
     | '/builder/'
     | '/terminology/'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/bundle'
+    | '/exchange'
     | '/terminology/$systemId'
     | '/builder'
     | '/terminology'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/'
     | '/builder'
     | '/bundle'
+    | '/exchange'
     | '/terminology/$systemId'
     | '/builder/'
     | '/terminology/'
@@ -127,12 +139,20 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BuilderRouteRoute: typeof BuilderRouteRouteWithChildren
   BundleRoute: typeof BundleRoute
+  ExchangeRoute: typeof ExchangeRoute
   TerminologySystemIdRoute: typeof TerminologySystemIdRoute
   TerminologyIndexRoute: typeof TerminologyIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/exchange': {
+      id: '/exchange'
+      path: '/exchange'
+      fullPath: '/exchange'
+      preLoaderRoute: typeof ExchangeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/bundle': {
       id: '/bundle'
       path: '/bundle'
@@ -212,6 +232,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BuilderRouteRoute: BuilderRouteRouteWithChildren,
   BundleRoute: BundleRoute,
+  ExchangeRoute: ExchangeRoute,
   TerminologySystemIdRoute: TerminologySystemIdRoute,
   TerminologyIndexRoute: TerminologyIndexRoute,
 }

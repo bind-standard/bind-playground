@@ -7,6 +7,7 @@ const navItems = [
   { label: 'Terminology', to: '/terminology' },
   { label: 'Builder', to: '/builder' },
   { label: 'Bundle', to: '/bundle' },
+  { label: 'Exchange', to: '/exchange' },
 ] as const;
 
 export function AppHeader() {

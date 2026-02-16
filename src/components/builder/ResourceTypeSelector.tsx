@@ -16,6 +16,7 @@ const RESOURCE_DESCRIPTIONS: Record<string, string> = {
   Risk: 'A unit of risk being insured',
   Person: 'An individual in the insurance ecosystem',
   PersonRole: 'A person\'s role within an organization',
+  Certificate: 'A Certificate of Insurance (COI) proving coverage to a third party',
 };
 
 // Bundle is a container type assembled by the playground, not a user-created resource
